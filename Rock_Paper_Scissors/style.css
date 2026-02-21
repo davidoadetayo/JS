@@ -9,6 +9,7 @@ body {
   background: linear-gradient(135deg, #1a0033, #0c23a3, #7209b7);
 }
 
+
 body::before {
   content: "";
   position: absolute;
@@ -26,6 +27,7 @@ body::before {
     );
   z-index: 0;
 }
+
 
 .container {
     padding: 1rem;
