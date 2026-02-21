@@ -1,0 +1,130 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #202124;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8rem;
+  margin-bottom: 2rem;
+}
+
+main.container {
+  position: relative;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: black;
+  border-radius: 2rem;
+  padding: 1.5rem 1rem;
+}
+
+.dIsland {
+  display: block;
+  height: 30px;
+  width: 140px;
+  background: black;
+  border: 1px solid white;
+  border-radius: 20px;
+}
+
+.lens{
+  position: absolute;
+  top: 29px;
+  right: 150px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  border: 5px soild red;
+}
+
+.calculator input {
+  flex: 1;
+  text-align: end;
+  align-self: flex-end;
+  font-size: 3rem;
+  /* padding: 0.5rem; */
+  width: 340px;
+  border: none;
+  outline: none;
+  color: white;
+  background: none;
+}
+
+input#display::placeholder {
+  color: white;
+}
+
+input#resultDisplay {
+  color: rgb(163, 162, 162);
+  font-size: 2rem;
+}
+
+input#resultDisplay::placeholder {
+  color: transparent;
+  opacity: 0;
+}
+
+.buttons {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: .5rem;
+  row-gap: 1rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1c1c1c;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: 35%;
+  border: none;
+  height: 70px;
+  width: 90px;
+}
+
+.btn.operator {
+  background: #ff9500;
+}
+
+.btn:nth-child(1),
+.btn:nth-child(2),
+.btn:nth-child(3) {
+  color: #1c1c1c;
+  background: #d4d4d2;
+}
+
+.btn:active {
+    opacity: .8;
+}
+
+.bar {
+  width: 120px;
+  height: 5px;
+  border-radius: 12px;
+  background: white;
+}
