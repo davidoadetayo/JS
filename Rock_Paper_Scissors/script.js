@@ -16,6 +16,12 @@ const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const display = document.getElementById("resultDisplay");
 
+function emoji(move) {
+  if (move === "rock") return "✊";
+  if (move === "paper") return "✋";
+  if (move === "scissors") return "✌️";
+}
+
 rock.addEventListener("click", () => {
   const randomNumber = Math.random();
   let computerMove = "";
@@ -30,15 +36,14 @@ rock.addEventListener("click", () => {
   }
 
   if (computerMove == "rock") {
-    result = "It's a tie";
-    display.innerText = `You picked rock.\nComputer picked ${computerMove}.\n${result}`;
+    result = "It's a draw";
   } else if (computerMove == "paper") {
     result = "You lose";
-    display.innerText = `You picked rock.\nComputer picked ${computerMove}.\n${result}`;
   } else if (computerMove == "scissors") {
     result = "You win";
-    display.innerText = `You picked rock.\nComputer picked ${computerMove}.\n${result}`;
   }
+
+  display.innerText = `You chose ${emoji("rock")} • Computer chose ${emoji(computerMove)}\n${result.toUpperCase()}`;
 });
 
 paper.addEventListener("click", () => {
@@ -56,15 +61,15 @@ paper.addEventListener("click", () => {
 
   if (computerMove == "rock") {
     result = "You win";
-    display.innerText = `You picked paper.\nComputer picked ${computerMove}.\n${result}`;
   } else if (computerMove == "paper") {
-    result = "It's a tie";
-    display.innerText = `You picked paper.\nComputer picked ${computerMove}.\n${result}`;
+    result = "It's a draw";
   } else if (computerMove == "scissors") {
     result = "You lose";
-    display.innerText = `You picked paper.\nComputer picked ${computerMove}.\n${result}`;
   }
+
+  display.innerText = `You chose ${emoji("paper")} • Computer chose ${emoji(computerMove)}\n${result.toUpperCase()}`;
 });
+
 
 scissors.addEventListener("click", () => {
   const randomNumber = Math.random();
@@ -81,12 +86,11 @@ scissors.addEventListener("click", () => {
 
   if (computerMove == "rock") {
     result = "You lose";
-    display.innerText = `You picked scissors.\nComputer picked ${computerMove}.\n${result}`;
   } else if (computerMove == "paper") {
     result = "You win";
-    display.innerText = `You picked scissors.\nComputer picked ${computerMove}.\n${result}`;
   } else if (computerMove == "scissors") {
-    result = "It's a tie";
-    display.innerText = `You picked scissors.\nComputer picked ${computerMove}.\n${result}`;
+    result = "It's a draw";
   }
+
+  display.innerText = `You chose ${emoji("scissors")} • Computer chose ${emoji(computerMove)}\n${result.toUpperCase()}`;
 });

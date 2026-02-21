@@ -36,13 +36,10 @@ body::before {
   z-index: 1;
   padding: 40px 50px;
   border-radius: 20px;
-
   background: rgba(255, 255, 255, 0.12);
   -webkit---webkit-backdrop-filter: blur(18px);
-
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
-
   color: #fff;
   text-align: center;
 }
@@ -70,16 +67,15 @@ body::before {
 }
 
 .choice {
-  flex: 1 0 50px;
-  height: 80px;
+  width: clamp(60px, 15vw, 90px);
+  height: clamp(60px, 15vw, 90px);
+  font-size: clamp(24px, 6vw, 32px);
   border-radius: 50%;
   border: none;
-  font-size: 30px;
   background: rgba(255, 255, 255, 0.18);
   border: none;
   --webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.35);
-
   color: #fff;
   transition: all 0.25s ease;
   cursor: pointer;
@@ -95,10 +91,10 @@ body::before {
   transform: translateY(0) scale(0.97);
 }
 
-.result {
-  margin-top: 25px;
-  font-size: 22px;
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.9);
+#resultDisplay {
+  font-size: 20px;
+  white-space: pre-line;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
   min-height: 30px;
 }
