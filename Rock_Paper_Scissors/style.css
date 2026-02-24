@@ -6,6 +6,7 @@
 
 body {
   min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +14,7 @@ body {
   background: radial-gradient(circle at top, #1d3171, #101a35);
   color: #ffffff;
   padding: 2rem 0;
-  gap: 5rem;
+  gap: 10rem;
 }
 
 .scoreboard {
@@ -98,7 +99,9 @@ body {
   position: absolute;
   z-index: 1;
 
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .choice:hover {
@@ -145,7 +148,7 @@ body {
 #resultScreen {
   position: fixed;
   top: 50%;
-  left: 50%;  
+  left: 50%;
   transform: translate(-50%, -50%);
   background: black;
   color: #fff;
@@ -155,11 +158,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 1rem;
   text-align: center;
-  min-width: 400px;
+  min-width: 300px;
   z-index: 100;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 /* Picks container */
@@ -177,7 +180,8 @@ body {
   gap: 10px;
 }
 
-#userPick, #housePick {
+#userPick,
+#housePick {
   font-size: 70px;
   width: 140px;
   height: 140px;
@@ -186,7 +190,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 #resultText {
@@ -195,21 +199,99 @@ body {
   margin: 10px 0;
 }
 
-
 #playAgain {
   padding: 12px 25px;
   color: #fff;
   background: transparent;
-  border: 2px solid  #1d3171;
+  border: 2px solid #1d3171;
   outline: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   font-size: 16px;
-  transition: transform 0.2s, background 0.2s;
+  transition:
+    transform 0.2s,
+    background 0.2s;
 }
 
 #playAgain:hover {
   background: #1d3171;
   transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1.5rem 0;
+    gap: 5rem;  
+  }
+
+  .scoreboard {
+    width: 95%;
+    gap: 1.5rem;
+    padding: 1rem 1rem;
+  }
+
+  .scoreboard .title {
+    font-size: 1rem;
+  }
+
+  .scoreboard .score-box {
+    padding: 0.6rem 1.2rem;
+    min-width: 90px;
+  }
+
+  .score-box span {
+    font-size: 1.8rem;
+  }
+
+  .choices {
+    width: 240px;
+    height: 225px;
+    margin-top: 1.5rem;
+  }
+
+  .choice {
+    width: 100px;
+    height: 100px;
+    font-size: 32px;
+  }
+
+  #rock {
+    bottom: 5px;
+    border: 0.9rem solid #e74c3c;
+  }
+
+  #paper {
+    border: 0.9rem solid #3499dc;
+  }
+
+  #scissors {
+    border: 0.9rem solid #f1c40f;
+  }
+
+  #resultScreen {
+    padding: 20px 25px;
+    min-width: 90vw;
+    min-height: auto;
+  }
+
+  .result-picks {
+    gap: 1.5rem;
+  }
+
+  #userPick,
+  #housePick {
+    font-size: 50px;
+    width: 100px;
+    height: 100px;
+  }
+
+  #resultText {
+    font-size: 20px;
+  }
+
+  #playAgain {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
 }
