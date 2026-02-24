@@ -9,22 +9,56 @@
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <div class="container">
-      <div class="game-container">
-        <h1>Rock Paper Scissors</h1>
+    <div class="scoreboard">
+      <div class="title">ROCK<br />PAPER<br />SCISSORS</div>
 
-        <div class="choices">
-          <button id="rock" class="choice">✊</button>
-
-          <button id="paper" class="choice">✋</button>
-
-          <button id="scissors" class="choice">✌️</button>
-        </div>
-        <br />
-        <div id="resultDisplay"></div>
+      <div class="score-box">
+        <p>SCORE</p>
+        <span id="scoreValue">0</span>
       </div>
-      
     </div>
+
+    <div class="game">
+      <div class="choices">
+        <svg
+          class="triangle-lines"
+          viewBox="0 0 300 260"
+          preserveAspectRatio="none"
+        >
+          <line x1="40" y1="200" x2="260" y2="200" />
+          <line x1="150" y1="40" x2="260" y2="200" />
+          <line x1="150" y1="40" x2="40" y2="200" />
+        </svg>
+
+        <button id="rock" class="choice">✊</button>
+
+        <button id="paper" class="choice">✋</button>
+
+        <button id="scissors" class="choice">✌️</button>
+      </div>
+    </div>
+
+    <!-- <button id="resetBtn" class="reset-btn">Reset</button> -->
+    <div id="resultScreen" class="hidden">
+      <div class="result-picks">
+        <div>
+          <p>
+            YOU<br />
+            PICKED
+          </p>
+          <div id="userPick"></div>
+        </div>
+
+        <div>
+          <p>HOUSE<br />PICKED</p>
+          <div id="housePick"></div>
+        </div>
+      </div>
+
+      <h2 id="resultText"></h2>
+      <button id="playAgain">PLAY AGAIN</button>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

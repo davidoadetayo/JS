@@ -16,16 +16,25 @@ const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 const display = document.getElementById("resultDisplay");
 
+const resultScreen = document.getElementById("resultScreen");
+const userPick = document.getElementById("userPick");
+const housePick = document.getElementById("housePick");
+const resultText = document.getElementById("resultText");
+const playAgain = document.getElementById("playAgain");
+
+const currentScore = document.getElementById("scoreValue");
+let result = "";
+let score = 0;
+
 function emoji(move) {
   if (move === "rock") return "✊";
   if (move === "paper") return "✋";
   if (move === "scissors") return "✌️";
 }
 
-rock.addEventListener("click", () => {
+function pickComputerMove() {
   const randomNumber = Math.random();
   let computerMove = "";
-  let result = "";
 
   if (randomNumber >= 0 && randomNumber < 1 / 3) {
     computerMove = "rock";
@@ -35,62 +44,47 @@ rock.addEventListener("click", () => {
     computerMove = "scissors";
   }
 
-  if (computerMove == "rock") {
-    result = "It's a draw";
-  } else if (computerMove == "paper") {
-    result = "You lose";
-  } else if (computerMove == "scissors") {
-    result = "You win";
+  return computerMove;
+}
+
+function playGame(playerMove) {
+  const computerMove = pickComputerMove();
+
+  if (playerMove === computerMove) result = "TIE";
+  else if (
+    (playerMove === "rock" && computerMove === "scissors") ||
+    (playerMove === "paper" && computerMove === "rock") ||
+    (playerMove === "scissors" && computerMove === "paper")
+  ) {
+    result = "YOU WIN";
+  } else {
+    result = "YOU LOSE";
   }
 
-  display.innerText = `You chose ${emoji("rock")} • Computer chose ${emoji(computerMove)}\n${result.toUpperCase()}`;
+  userPick.innerText = emoji(playerMove);
+  housePick.innerText = emoji(computerMove);
+
+  resultText.innerText = result;
+
+  resultScreen.classList.remove("hidden");
+
+  if (result === "YOU WIN") {
+    score += 1;
+  }
+
+  console.log(computerMove);
+
+  updateScore();
+}
+
+function updateScore() {
+  currentScore.innerText = score;
+}
+
+[rock, paper, scissors].forEach((btn) => {
+  btn.addEventListener("click", () => playGame(btn.id));
 });
 
-paper.addEventListener("click", () => {
-  const randomNumber = Math.random();
-  let computerMove = "";
-  let result = "";
-
-  if (randomNumber >= 0 && randomNumber < 1 / 3) {
-    computerMove = "rock";
-  } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
-    computerMove = "paper";
-  } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
-    computerMove = "scissors";
-  }
-
-  if (computerMove == "rock") {
-    result = "You win";
-  } else if (computerMove == "paper") {
-    result = "It's a draw";
-  } else if (computerMove == "scissors") {
-    result = "You lose";
-  }
-
-  display.innerText = `You chose ${emoji("paper")} • Computer chose ${emoji(computerMove)}\n${result.toUpperCase()}`;
-});
-
-
-scissors.addEventListener("click", () => {
-  const randomNumber = Math.random();
-  let computerMove = "";
-  let result = "";
-
-  if (randomNumber >= 0 && randomNumber < 1 / 3) {
-    computerMove = "rock";
-  } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
-    computerMove = "paper";
-  } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
-    computerMove = "scissors";
-  }
-
-  if (computerMove == "rock") {
-    result = "You lose";
-  } else if (computerMove == "paper") {
-    result = "You win";
-  } else if (computerMove == "scissors") {
-    result = "It's a draw";
-  }
-
-  display.innerText = `You chose ${emoji("scissors")} • Computer chose ${emoji(computerMove)}\n${result.toUpperCase()}`;
+playAgain.addEventListener("click", () => {
+  resultScreen.classList.add("hidden");
 });
