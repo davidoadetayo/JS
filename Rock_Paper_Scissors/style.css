@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 body {
   min-height: 100vh;
   height: 100%;
@@ -222,7 +227,7 @@ body {
 @media (max-width: 480px) {
   body {
     padding: 1.5rem 0;
-    gap: 5rem;  
+    gap: 5rem;
   }
 
   .scoreboard {
