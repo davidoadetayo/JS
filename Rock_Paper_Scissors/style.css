@@ -259,6 +259,11 @@ body {
 }
 
 @media (max-width: 480px) {
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
   body {
     padding: 1.5rem 0;
     gap: 9rem;
