@@ -6,11 +6,20 @@
 
     <link rel="stylesheet" href="style.css" />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=M+PLUS+Rounded+1c&family=Stack+Sans+Text:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Rock Paper Scissors</title>
   </head>
   <body>
     <div class="scoreboard">
-      <div class="title">ROCK<br />PAPER<br />SCISSORS</div>
+      <div class="title">
+        <a href="/Rock_Paper_Scissors/">ROCK<br />PAPER<br />SCISSORS</a>
+      </div>
 
       <div class="score-box">
         <p>SCORE</p>
@@ -18,16 +27,16 @@
       </div>
     </div>
 
-    <div class="game">
+    <div class="game" id="game">
       <div class="choices">
         <svg
           class="triangle-lines"
           viewBox="0 0 300 260"
           preserveAspectRatio="none"
         >
-          <line x1="40" y1="200" x2="260" y2="200" />
-          <line x1="150" y1="40" x2="260" y2="200" />
-          <line x1="150" y1="40" x2="40" y2="200" />
+          <line x1="50" y1="220" x2="250" y2="220" />
+          <line x1="150" y1="0" x2="250" y2="220" />
+          <line x1="150" y1="0" x2="50" y2="220" />
         </svg>
 
         <button id="rock" class="choice">✊</button>
@@ -42,21 +51,23 @@
     <div id="resultScreen" class="hidden">
       <div class="result-picks">
         <div>
+          <div id="userPick"></div>
           <p>
             YOU<br />
             PICKED
           </p>
-          <div id="userPick"></div>
         </div>
 
         <div>
-          <p>HOUSE<br />PICKED</p>
           <div id="housePick"></div>
+          <p>HOUSE<br />PICKED</p>
         </div>
       </div>
 
-      <h2 id="resultText"></h2>
-      <button id="playAgain">PLAY AGAIN</button>
+      <div class="bottom-row">
+        <h2 id="resultText"></h2>
+        <button id="playAgain">PLAY AGAIN</button>
+      </div>
     </div>
 
     <script src="script.js"></script>

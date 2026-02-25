@@ -14,8 +14,8 @@ console.log(
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
-const display = document.getElementById("resultDisplay");
 
+const game = document.getElementById("game");
 const resultScreen = document.getElementById("resultScreen");
 const userPick = document.getElementById("userPick");
 const housePick = document.getElementById("housePick");
@@ -66,7 +66,11 @@ function playGame(playerMove) {
 
   resultText.innerText = result;
 
+  game.style.display = "none";
+
   resultScreen.classList.remove("hidden");
+  resultScreen.classList.remove("result-rock", "result-paper", "result-scissors");
+  resultScreen.classList.add(`result-${playerMove}`);
 
   if (result === "YOU WIN") {
     score += 1;
@@ -87,4 +91,6 @@ function updateScore() {
 
 playAgain.addEventListener("click", () => {
   resultScreen.classList.add("hidden");
+  resultScreen.classList.remove("result-rock", "result-paper", "result-scissors");
+  game.style.display = "block";
 });

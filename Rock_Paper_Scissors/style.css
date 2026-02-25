@@ -9,17 +9,24 @@ button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 body {
   min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Stack Sans Text", sans-serif;
   background: radial-gradient(circle at top, #1d3171, #101a35);
   color: #ffffff;
   padding: 2rem 0;
   gap: 10rem;
+  overflow: hidden;
+  animation: fadeIn .3s ease-in;
 }
 
 .scoreboard {
@@ -73,9 +80,8 @@ body {
 
 .choices {
   position: relative;
-  width: 340px;
-  height: 320px;
-  margin-top: 3rem;
+  width: 500px;
+  height: 360px;
 }
 
 .triangle-lines {
@@ -94,12 +100,12 @@ body {
 }
 
 .choice {
-  width: 135px;
-  height: 135px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   border: none;
   background: #ededed;
-  font-size: 45px;
+  font-size: 4rem;
   cursor: pointer;
   position: absolute;
   z-index: 1;
@@ -118,10 +124,10 @@ body {
 }
 
 #rock {
-  bottom: 10px;
+  bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  border: 1.2rem solid #e74c3c;
+  border: 1rem solid #e74c3c;
 }
 
 #rock:hover {
@@ -134,14 +140,25 @@ body {
 
 #paper {
   top: 0;
-  left: 0;
-  border: 1.2rem solid #3499dc;
+  left: 20px;
+  border: 1rem solid #3499dc;
 }
 
 #scissors {
   top: 0;
-  right: 0;
-  border: 1.2rem solid #f1c40f;
+  right: 20px;
+  border: 1rem solid #f1c40f;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 #resultScreen.hidden {
@@ -149,31 +166,24 @@ body {
   opacity: 0;
 }
 
-/* Result screen container */
 #resultScreen {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: black;
   color: #fff;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 5rem;
+  padding: 0 2rem;
   text-align: center;
-  min-width: 300px;
+  width: 500px;
   z-index: 100;
   transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease;
 }
 
-/* Picks container */
 .result-picks {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   gap: 4rem;
 }
@@ -185,9 +195,14 @@ body {
   gap: 10px;
 }
 
+.result-picks p {
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
 #userPick,
 #housePick {
-  font-size: 70px;
+  font-size: 4rem;
   width: 140px;
   height: 140px;
   background: #2a2a2a;
@@ -198,17 +213,36 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+#userPick,
+#housePick {
+  border: 15px solid #3499dc;
+}
+
+.result-rock #userPick {
+  border-color: #e74c3c;
+}
+
+.result-paper #userPick {
+  border-color: #3499dc;
+}
+
+.result-scissors #userPick {
+  border-color: #f1c40f;
+}
+
 #resultText {
-  font-size: 28px;
+  font-size: 3rem;
   font-weight: bold;
   margin: 10px 0;
 }
 
 #playAgain {
+  display: block;
+  width: 40vw;
   padding: 12px 25px;
-  color: #fff;
-  background: transparent;
-  border: 2px solid #1d3171;
+  color: #2a2a2a;
+  background: #ededed;
+  border: none;
   outline: none;
   border-radius: 8px;
   cursor: pointer;
@@ -220,14 +254,14 @@ body {
 }
 
 #playAgain:hover {
-  background: #1d3171;
+  background: #ededed;
   transform: scale(1.05);
 }
 
 @media (max-width: 480px) {
   body {
     padding: 1.5rem 0;
-    gap: 5rem;
+    gap: 9rem;
   }
 
   .scoreboard {
@@ -250,9 +284,8 @@ body {
   }
 
   .choices {
-    width: 240px;
+    width: 350px;
     height: 225px;
-    margin-top: 1.5rem;
   }
 
   .choice {
@@ -262,7 +295,7 @@ body {
   }
 
   #rock {
-    bottom: 5px;
+    bottom: -20px;
     border: 0.9rem solid #e74c3c;
   }
 
@@ -275,9 +308,7 @@ body {
   }
 
   #resultScreen {
-    padding: 20px 25px;
-    min-width: 90vw;
-    min-height: auto;
+    width: 90vw;
   }
 
   .result-picks {
