@@ -23,8 +23,10 @@ const resultText = document.getElementById("resultText");
 const playAgain = document.getElementById("playAgain");
 
 const currentScore = document.getElementById("scoreValue");
+const music = document.getElementById('bg-music');
 let result = "";
 let score = 0;
+const maxScore = 2;
 
 function emoji(move) {
   if (move === "rock") return "✊";
@@ -33,6 +35,8 @@ function emoji(move) {
 }
 
 function pickComputerMove() {
+  music.volume = 0.2
+  music.play()
   const randomNumber = Math.random();
   let computerMove = "";
 
@@ -48,6 +52,14 @@ function pickComputerMove() {
 }
 
 function playGame(playerMove) {
+
+  if (score >= maxScore) {
+    resultText.innerText = "GAME OVER";
+    resultScreen.classList.remove("hidden");
+    game.style.display = "none";
+    return;
+  }
+
   const computerMove = pickComputerMove();
 
   if (playerMove === computerMove) result = "TIE";
@@ -79,6 +91,10 @@ function playGame(playerMove) {
   console.log(computerMove);
 
   updateScore();
+
+  if (score === maxScore) {
+    resultText.innerText = "YOU WON THE GAME 🎉";
+  }
 }
 
 function updateScore() {
@@ -93,4 +109,9 @@ playAgain.addEventListener("click", () => {
   resultScreen.classList.add("hidden");
   resultScreen.classList.remove("result-rock", "result-paper", "result-scissors");
   game.style.display = "block";
+
+  if (score >= maxScore) {
+    score = 0;
+    updateScore();
+  }
 });
