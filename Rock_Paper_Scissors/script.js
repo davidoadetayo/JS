@@ -26,7 +26,7 @@ const currentScore = document.getElementById("scoreValue");
 const music = document.getElementById('bg-music');
 let result = "";
 let score = 0;
-const maxScore = 2;
+const maxScore = 20;
 
 function emoji(move) {
   if (move === "rock") return "✊";
