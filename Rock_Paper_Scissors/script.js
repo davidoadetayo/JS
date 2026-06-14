@@ -35,8 +35,10 @@ function emoji(move) {
 }
 
 function pickComputerMove() {
-  music.volume = 0.2
-  music.play()
+  if (music) {
+    music.volume = 0.2
+    music.play().catch(() => { })
+  }
   const randomNumber = Math.random();
   let computerMove = "";
 
