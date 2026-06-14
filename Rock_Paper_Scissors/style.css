@@ -249,7 +249,7 @@ body {
 
 #playAgain {
   display: block;
-  width: 20vw;
+  width: 100%;
   padding: 12px 25px;
   color: #2a2a2a;
   background: #ededed;
