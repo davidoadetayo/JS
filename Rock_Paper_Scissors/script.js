@@ -23,10 +23,15 @@ const resultText = document.getElementById("resultText");
 const playAgain = document.getElementById("playAgain");
 
 const currentScore = document.getElementById("scoreValue");
+const streakDisplay = document.getElementById("streakValue")
 const music = document.getElementById('bg-music');
 let result = "";
-let score = 0;
+let losses = 0
+let score = Number(localStorage.getItem("score")) || 0
+let currentStreak = Number(localStorage.getItem("currentStreak")) || 0
+let bestStreak = Number(localStorage.getItem("bestStreak")) || 0
 const maxScore = 20;
+let gameOver = false
 
 function emoji(move) {
   if (move === "rock") return "✊";
@@ -36,7 +41,7 @@ function emoji(move) {
 
 function pickComputerMove() {
   if (music) {
-    music.volume = 0.2
+    music.volume = 0.1
     music.play().catch(() => { })
   }
   const randomNumber = Math.random();
@@ -54,14 +59,6 @@ function pickComputerMove() {
 }
 
 function playGame(playerMove) {
-
-  if (score >= maxScore) {
-    resultText.innerText = "GAME OVER";
-    resultScreen.classList.remove("hidden");
-    game.style.display = "none";
-    return;
-  }
-
   const computerMove = pickComputerMove();
 
   if (playerMove === computerMove) result = "TIE";
@@ -88,19 +85,36 @@ function playGame(playerMove) {
 
   if (result === "YOU WIN") {
     score += 1;
+    currentStreak++
+
+    if (currentStreak > bestStreak) {
+      bestStreak = currentStreak
+    }
+  } else if (result === "YOU LOSE") {
+    losses++
+    currentStreak = 0
   }
+
+  localStorage.setItem("score", score)
+  localStorage.setItem("currentStreak", currentStreak)
+  localStorage.setItem("bestStreak", bestStreak)
 
   console.log(computerMove);
 
   updateScore();
 
-  if (score === maxScore) {
+  if (score >= maxScore) {
     resultText.innerText = "YOU WON THE GAME 🎉";
+    resultScreen.classList.remove("hidden");
+    game.style.display = "none";
+    gameOver = true
+    return;
   }
 }
 
 function updateScore() {
   currentScore.innerText = score;
+  streakDisplay.innerText = currentStreak;
 }
 
 [rock, paper, scissors].forEach((btn) => {
@@ -108,12 +122,26 @@ function updateScore() {
 });
 
 playAgain.addEventListener("click", () => {
-  resultScreen.classList.add("hidden");
-  resultScreen.classList.remove("result-rock", "result-paper", "result-scissors");
-  game.style.display = "block";
+  resultScreen.classList.add("hidden")
+  resultScreen.classList.remove("result-rock", "result-paper", "result-scissors")
+  game.style.display = "block"
 
-  if (score >= maxScore) {
-    score = 0;
-    updateScore();
+  if (gameOver) {
+    resetGame()
+    gameOver = false
   }
-});
+})
+
+function resetGame() {
+  score = 0
+  currentStreak = 0
+  bestStreak = 0
+
+  localStorage.removeItem("score")
+  localStorage.removeItem("currentStreak")
+  localStorage.removeItem("bestStreak")
+
+  updateScore();
+}
+
+updateScore()
